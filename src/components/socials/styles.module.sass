@@ -1,0 +1,28 @@
+.social
+	display: flex
+	font-size: 1.5rem
+	> * + *
+		margin-left: 1em
+
+	> a
+		display: flex
+		justify-content: center
+		align-items: center
+
+	> a > svg
+		fill: #e0e1dd
+		font-size: 1rem
+		width: 1.5em
+		height: 3em
+		transition: fill .2s ease-out
+
+	> a > svg:hover
+		fill: #aa862c
+
+@media (max-width: 40em)
+	.social
+		font-size: 2rem
+
+
+.privet
+	color: #cd86e3

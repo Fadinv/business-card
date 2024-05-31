@@ -1,0 +1,75 @@
+@import "src/styles/mixins"
+
+$class: skill-box
+
+.#{$class}
+	+column-flex(2px, center)
+	flex: 1
+	cursor: pointer
+
+	&:hover
+		.#{$class}__cell
+			&._low
+				background-color: rgba(189, 224, 254, .05)
+				color: #bde0fe
+				border-color: #bde0fe
+
+			&._medium
+				background-color: rgba(42, 157, 143, .05)
+				color: #2a9d8f
+				border-color: #2a9d8f
+
+			&._high
+				background-color: rgba(230, 57, 70, .05)
+				color: #e63946
+				border-color: #e63946
+
+
+		.#{$class}__lvl
+			&._low
+				color: #bde0fe
+
+			&._medium
+				color: #2a9d8f
+
+			&._high
+				color: #e63946
+
+	&__cell
+		font-size: 1.5rem
+		border-radius: 1rem
+		font-weight: 600
+		flex: 1
+		display: flex
+		justify-content: center
+		padding: 8px 16px
+		border: 3px solid
+		width: 100%
+		white-space: nowrap
+		transition: color .3s ease-out, border-color .3s ease-out, background-color .3s ease-out
+
+
+	&__cell
+		&._low
+			color: #ced4da
+			border-color: #ced4da
+
+		&._medium
+			color: #81b29a
+			border-color: #81b29a
+
+		&._high
+			color: #f07167
+			border-color: #f07167
+
+
+	&__lvl
+		transition: color .3s ease-out, border-color .3s ease-out
+		&._low
+			color: #ced4da
+
+		&._medium
+			color: #81b29a
+
+		&._high
+			color: #f07167

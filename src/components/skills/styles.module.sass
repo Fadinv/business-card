@@ -1,0 +1,18 @@
+@import "src/styles/mixins"
+
+.skills
+	+column-flex(1px, center)
+	width: 100%
+	height: 100%
+	padding: 1em
+
+	&__list
+		+row-flex-wrap(1em)
+		max-width: 720px
+
+	&__sep
+		margin: 10vh 0 10vh
+		border-radius: 50%
+		height: 2px
+		width: 100%
+		background-color: #f07167

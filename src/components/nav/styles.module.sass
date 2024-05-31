@@ -1,0 +1,71 @@
+.nav
+	position: absolute
+	top: 4rem
+	display: inherit
+	justify-content: inherit
+	align-items: inherit
+	font-size: 0.85rem
+	max-width: var(--max-width)
+	width: 100%
+	z-index: 2
+	font-family: var(--font-mono)
+
+
+.nav a
+	display: flex
+	justify-content: center
+	align-items: center
+	gap: 0.5rem
+
+.nav .first-node
+	position: relative
+	margin: 0
+	padding: 1rem 1.5rem
+	background-color: rgba(255, 255, 255, 0.2)
+	transition: background-color .2s ease-out
+	border: 1px solid rgba(224, 96, 218, 0.2)
+	border-radius: var(--border-radius)
+	display: flex
+	> * + *
+		margin-left: 1rem
+
+._clickable
+	cursor: pointer
+
+	&:hover
+		background-color: rgba(255, 255, 255, 0.3)
+
+
+/* Mobile */
+@media (max-width: 700px)
+	.nav
+		font-size: 0.8rem
+		position: static
+
+	.nav a
+		padding: 1rem
+
+	.nav .first-node,
+	.nav .second-node
+		display: flex
+		justify-content: center
+		position: fixed
+		width: 100%
+
+	.nav .first-node
+		align-items: center
+		inset: 0 0 auto
+		padding: 2rem 1rem 1.4rem
+		border-radius: 0
+		border: none
+		border-bottom: 1px solid rgba(224, 96, 218, 0.2)
+		background-clip: padding-box
+		backdrop-filter: blur(24px)
+
+	.nav .second-node
+		align-items: flex-end
+		inset: auto 0 0
+		padding: 2rem
+		height: 200px
+		background: linear-gradient(to bottom,transparent 0%,rgba(255, 255, 255, .5) 40%)
+		z-index: 1
