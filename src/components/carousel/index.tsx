@@ -9,7 +9,7 @@ export interface CarouselProps {
 }
 
 const Carousel: FC<CarouselProps> = ({list}) => {
-	const [currentIndex, setCurrentIndex] = useState(1);
+	const [currentIndex, setCurrentIndex] = useState(0);
 	const isAnimatingRef = useRef(false);
 
 	const onWheel = useCallback((e: React.WheelEvent<HTMLDivElement>) => {
