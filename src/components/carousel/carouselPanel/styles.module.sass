@@ -9,7 +9,7 @@ $border-active-color: #e0e1dd
 .#{$class}
 	+row(center)
 	position: fixed
-	top: 20px
+	bottom: 20px
 	left: 50%
 	right: 50%
 	background-color: $bg-color
@@ -42,11 +42,11 @@ $border-active-color: #e0e1dd
 
 	&__el-sep
 		+fixed-height(12px)
-		+fixed-width(34px)
+		+fixed-width(36px)
 		border:
 			top: 1px solid $border-color
 			bottom: 1px solid $border-color
-		transition: border-width .3s ease-out
+		transition: border-width .3s ease-out, background-color .3s ease-out
 		background-color: $bg-color
 		z-index: 1
 		margin: 0 -2px
