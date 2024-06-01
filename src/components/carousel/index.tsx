@@ -1,3 +1,4 @@
+import CarouselPanel from '@/components/carousel/carouselPanel';
 import React, {FC, ReactNode, useCallback, useRef, useState} from 'react';
 import CarouselElement from '@/components/carousel/carouselElement';
 import styles from './styles.module.sass';
@@ -10,6 +11,7 @@ export interface CarouselItemProps {
 
 export interface CarouselSingleEl {
 	component: FC<CarouselItemProps>;
+	iconUrl: string;
 }
 
 export interface CarouselProps {
@@ -45,6 +47,11 @@ const Carousel: FC<CarouselProps> = ({list}) => {
 			className={styles['carousel']}
 			onWheel={onWheel}
 		>
+			<CarouselPanel
+				list={list}
+				currentIndex={currentIndex}
+				onChange={setCurrentIndex}
+			/>
 			{list.map((item, index) => (
 				<CarouselElement
 					key={index}

@@ -1,0 +1,57 @@
+@import "src/styles/mixins"
+
+$class: carousel-panel
+
+$bg-color: #0d1b2a
+$border-color: #e0e1dd
+$border-active-color: #e0e1dd
+
+.#{$class}
+	+row(center)
+	position: fixed
+	top: 20px
+	left: 50%
+	right: 50%
+	background-color: $bg-color
+	z-index: 10
+
+	&__el-box
+		+row(center)
+		cursor: pointer
+
+	&__el
+		+row(center)
+		height: 36px
+		width: 36px
+		border-radius: 50%
+		box-shadow: 0 0 0 1px $border-color
+		transition: box-shadow .3s ease-out
+		&._active
+			box-shadow: 0 0 0 2px $border-active-color
+
+	&__img-box
+		+row(center)
+		width: 100%
+		height: 100%
+		border-radius: 50%
+		background-color: $bg-color
+		z-index: 10
+
+		&._active
+			background-color: #183656
+
+	&__el-sep
+		+fixed-height(12px)
+		+fixed-width(34px)
+		border:
+			top: 1px solid $border-color
+			bottom: 1px solid $border-color
+		transition: border-width .3s ease-out
+		background-color: $bg-color
+		z-index: 1
+		margin: 0 -2px
+
+		&._active
+			border-width: 2px
+			border-color: $border-active-color
+			background-color: #183656

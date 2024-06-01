@@ -12,10 +12,11 @@ import React, {useMemo} from 'react';
 export default function Home() {
 	const list = useMemo<CarouselList>(() => {
 		return [
-			{component: Me},
-			{component: AboutMe},
-			{component: Skills},
-			{component: SoftSkills},
+			{component: Me, iconUrl: '/home-fill-svgrepo-com.svg'},
+			{component: AboutMe, iconUrl: '/people-nearby-svgrepo-com.svg'},
+			{component: Skills, iconUrl: '/science-svgrepo-com.svg'},
+			{component: SoftSkills, iconUrl: '/skills-svgrepo-com.svg'},
+			// {component: SoftSkills, iconUrl: '/briefcase-svgrepo-com.svg'},
 		];
 	}, []);
 

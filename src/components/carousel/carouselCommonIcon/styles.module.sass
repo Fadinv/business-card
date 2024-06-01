@@ -1,0 +1,15 @@
+@import "src/styles/mixins"
+
+$class: carousel-common-icon
+
+.#{$class}
+	width: 14px
+	height: 14px
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	transition: .3s ease-out width, .3s ease-out height
+
+	&._active
+		width: 24px
+		height: 24px
