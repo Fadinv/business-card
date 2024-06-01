@@ -1,36 +1,7 @@
+import {LangT} from '@/components/config/locale';
+import {engLocale} from '@/components/config/locale/eng';
+import {rusLocale} from '@/components/config/locale/rus';
 import React, {PropsWithChildren, useContext, useState} from 'react';
-
-export type LangT = 'eng' | 'rus';
-
-export interface Locale {
-	me: {
-		name: string;
-		jobTitle: string;
-	};
-	about: {
-		title: string;
-	}
-}
-
-export const engLocale: Locale = {
-	me: {
-		name: 'Fadin Vladimir',
-		jobTitle: 'Frontend developer',
-	},
-	about: {
-		title: 'About me',
-	}
-}
-
-export const rusLocale: Locale = {
-	me: {
-		name: 'Фадин Владимир',
-		jobTitle: 'Фронтенд разработчик',
-	},
-	about: {
-		title: 'Обо мне',
-	}
-}
 
 export const defaultContext = {
 	locale: engLocale,

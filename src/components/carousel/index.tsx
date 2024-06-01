@@ -19,18 +19,19 @@ export interface CarouselProps {
 const Carousel: FC<CarouselProps> = ({list}) => {
 	const [currentIndex, setCurrentIndex] = useState(1);
 	const isAnimatingRef = useRef(false);
+	const animationAbsValue = useRef(0);
 
 	const onWheel = useCallback((e: React.WheelEvent<HTMLDivElement>) => {
 		if (isAnimatingRef.current) return;
 		if (e.deltaY < -25 && currentIndex - 1 >= 0) {
 			isAnimatingRef.current = true;
 			setCurrentIndex(currentIndex - 1);
-			setTimeout(() => isAnimatingRef.current = false, 500);
+			setTimeout(() => isAnimatingRef.current = false, 700);
 		}
 		if (e.deltaY > 25 && currentIndex + 1 <= list.length - 1) {
 			isAnimatingRef.current = true;
 			setCurrentIndex(currentIndex + 1);
-			setTimeout(() => isAnimatingRef.current = false, 500);
+			setTimeout(() => isAnimatingRef.current = false, 700);
 		}
 	}, [currentIndex, isAnimatingRef.current]);
 
