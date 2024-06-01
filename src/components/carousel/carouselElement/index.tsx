@@ -1,13 +1,10 @@
 import React, {CSSProperties, FC, ReactNode, useEffect, useState} from 'react';
 import styles from './styles.module.sass';
 
-export interface CarouselSingleEl {
-	children: ReactNode;
-}
-
-export interface CarouselElementProps extends CarouselSingleEl {
+export interface CarouselElementProps {
 	positionIndex: number;
 	currentIndex: number;
+	children: ReactNode;
 }
 
 const CarouselElement: FC<CarouselElementProps> = ({positionIndex, currentIndex, children}) => {

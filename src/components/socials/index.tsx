@@ -1,9 +1,23 @@
-import React from 'react';
+import {useDebounceValue} from '@/hooks/useDebounceValue';
+import React, {FC, useMemo} from 'react';
+import cn from 'classnames';
 import styles from './styles.module.sass';
 
-const Socials = () => {
+export interface SocialsProps {
+	animationDelay?: number;
+	hasAnimation?: boolean;
+	inView?: boolean;
+}
+
+const Socials: FC<SocialsProps> = ({inView, hasAnimation, animationDelay}) => {
+	const delay = useMemo(() => animationDelay ?? 500, [animationDelay]);
+	const doAnimate = useDebounceValue(inView, delay, inView === false);
+
 	return (
-		<div className={styles.social}>
+		<div className={cn(styles.social, {
+			[styles['_has-animation']]: hasAnimation,
+			[styles['_do-animate']]: doAnimate,
+		})}>
 			<a target={'_blank'} href={'https://vk.com/fadrik'}>
 				<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg"
 				     viewBox="0 0 548.36 312.86">

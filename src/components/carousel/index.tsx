@@ -1,21 +1,27 @@
-import React, {FC, useCallback, useRef, useState} from 'react';
-import CarouselElement, {CarouselSingleEl} from '@/components/carousel/carouselElement';
+import React, {FC, ReactNode, useCallback, useRef, useState} from 'react';
+import CarouselElement from '@/components/carousel/carouselElement';
 import styles from './styles.module.sass';
 
 export type CarouselList = CarouselSingleEl[];
+
+export interface CarouselItemProps {
+	isActive: boolean;
+}
+
+export interface CarouselSingleEl {
+	component: FC<CarouselItemProps>;
+}
 
 export interface CarouselProps {
 	list: CarouselList;
 }
 
 const Carousel: FC<CarouselProps> = ({list}) => {
-	const [currentIndex, setCurrentIndex] = useState(0);
+	const [currentIndex, setCurrentIndex] = useState(1);
 	const isAnimatingRef = useRef(false);
 
 	const onWheel = useCallback((e: React.WheelEvent<HTMLDivElement>) => {
 		if (isAnimatingRef.current) return;
-		e.stopPropagation();
-		e.preventDefault();
 		if (e.deltaY < -25 && currentIndex - 1 >= 0) {
 			isAnimatingRef.current = true;
 			setCurrentIndex(currentIndex - 1);
@@ -28,6 +34,11 @@ const Carousel: FC<CarouselProps> = ({list}) => {
 		}
 	}, [currentIndex, isAnimatingRef.current]);
 
+	const renderChildren = (Component: FC<{ isActive: boolean; }>, index: number): ReactNode => {
+		const isActive = currentIndex === index;
+		return <Component isActive={isActive}/>;
+	};
+
 	return (
 		<div
 			className={styles['carousel']}
@@ -39,7 +50,9 @@ const Carousel: FC<CarouselProps> = ({list}) => {
 					{...item}
 					positionIndex={index}
 					currentIndex={currentIndex}
-				/>
+				>
+					{renderChildren(item.component, index)}
+				</CarouselElement>
 			))}
 		</div>
 	);

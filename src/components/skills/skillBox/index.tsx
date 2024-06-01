@@ -1,8 +1,9 @@
+import Text from '@/components/text';
 import React, {FC, useMemo} from 'react';
 import styles from './styles.module.sass';
 import cn from 'classnames';
 
-export type SkillLvlT = 'low' | 'medium' | 'high';
+export type SkillLvlT = 'beginner' | 'regular' | 'advanced';
 
 export interface SkillBoxProps {
 	skillName: string;
@@ -12,15 +13,16 @@ export interface SkillBoxProps {
 const SkillBox: FC<SkillBoxProps> = ({skillName, lvl}) => {
 	return (
 		<div className={styles['skill-box']}>
-			<span
-				className={cn(styles['skill-box__lvl'], styles[`_${lvl}`])}
-			>
-				{lvl}
-			</span>
-			<div
-				className={cn(styles['skill-box__cell'], styles[`_${lvl}`])}
-			>
-				{skillName}
+			<div className={styles['skill-box__header']}>
+				<div className={styles['skill-box__name']}>
+					{skillName}
+				</div>
+				<span className={styles['skill-box__lvl']}>
+					{lvl}
+				</span>
+			</div>
+			<div className={styles['skill-box__line']}>
+				<div className={cn(styles['skill-box__line-inner'], styles[`_${lvl}`])}></div>
 			</div>
 		</div>
 	);

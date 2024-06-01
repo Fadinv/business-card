@@ -1,14 +1,18 @@
+import {CarouselItemProps} from '@/components/carousel';
 import {useConfig} from '@/components/config';
 import Socials from '@/components/socials';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
-import React from 'react';
+import React, {FC, useEffect} from 'react';
 import styles from './styles.module.sass';
 import Text from '../../text';
 
-const Me = () => {
-	const config = useConfig();
-	const router = useRouter();
+export interface MeProps extends CarouselItemProps {
+
+}
+
+const Me: FC<MeProps> = ({isActive}) => {
+	const {config} = useConfig();
 
 	return (
 		<div className={styles['me']}>
@@ -53,9 +57,26 @@ const Me = () => {
 
 				/>
 			</div>
-			<Text as={'h1'} text={'Fadin Vladimir'}/>
-			<Text as={'description'} text={'Frontend developer'}/>
-			<Socials/>
+			<Text
+				hasAnimation
+				animationDelay={500}
+				inView={isActive}
+				useMargin
+				as={'h1'}
+				text={config.locale.me.name}
+			/>
+			<Text
+				hasAnimation
+				animationDelay={700}
+				inView={isActive}
+				as={'description'}
+				text={config.locale.me.jobTitle}
+			/>
+			<Socials
+				hasAnimation
+				animationDelay={900}
+				inView={isActive}
+			/>
 		</div>
 	);
 };
