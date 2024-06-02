@@ -7,5 +7,11 @@ export const rusLocale: Locale = {
 	},
 	about: {
 		title: 'Обо мне',
-	}
-}
+	},
+	softSkills: {
+		title: 'Навыки',
+	},
+	skills: {
+		title: 'Технологии',
+	},
+};

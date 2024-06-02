@@ -1,10 +1,16 @@
 import {LangT} from '@/components/config/locale';
 import {engLocale} from '@/components/config/locale/eng';
 import {rusLocale} from '@/components/config/locale/rus';
-import React, {PropsWithChildren, useContext, useState} from 'react';
+import SkillBox from '@/components/skills/skillBox';
+import React, {PropsWithChildren, useCallback, useContext, useState} from 'react';
+
+export type SkillLvlT = 'beginner' | 'regular' | 'advanced';
+
+export type SkillList = { skillName: string; lvl: SkillLvlT }[];
 
 export const defaultContext = {
 	locale: engLocale,
+	lang: 'eng' as LangT,
 	about: {
 		textElements: [
 			{
@@ -31,41 +37,66 @@ export const defaultContext = {
 					rus: 'Я глубоко увлечен своей работой и беру на себя ответственность за продукт компании, развивая его успех, как если бы он был моим собственным.',
 				},
 			},
-		]
+		],
+	},
+	onChangeLang: (_: LangT) => {},
+	skills: {
+		list: [
+			{skillName: 'JS', lvl: 'advanced'},
+			{skillName: 'react', lvl: 'advanced'},
+			{skillName: 'HTML', lvl: 'advanced'},
+			{skillName: 'CSS/SASS', lvl: 'advanced'},
+			{skillName: 'TS', lvl: 'regular'},
+			{skillName: 'graphql', lvl: 'regular'},
+			{skillName: 'webpack', lvl: 'regular'},
+			{skillName: 'git', lvl: 'regular'},
+			{skillName: 'redux', lvl: 'beginner'},
+			{skillName: 'next.js', lvl: 'beginner'},
+			{skillName: 'Vue', lvl: 'beginner'},
+		] as SkillList,
+	},
+	softSkills: {
+		list: [
+			{skillName: 'Communication', lvl: 'advanced'},
+			{skillName: 'Teamwork', lvl: 'advanced'},
+			{skillName: 'Problem-Solving', lvl: 'advanced'},
+			{skillName: 'Learning', lvl: 'advanced'},
+			{skillName: 'Leadership', lvl: 'regular'},
+			{skillName: 'Creativity', lvl: 'regular'},
+		] as SkillList,
 	},
 };
 
 export const ConfigContext = React.createContext(defaultContext);
 
 export const ConfigProvider: React.FC<PropsWithChildren> = ({children}) => {
-	const [contextValue, setContextValue] = useState(defaultContext);
+	const [config, setConfig] = useState(defaultContext);
+	const [_, setVersion] = useState(0);
+	const onChangeLang = useCallback((lang: LangT) => {
+		if (lang === config.lang) return;
+		const newConfig = Object.assign({}, config);
+		newConfig.lang = lang;
+		switch (lang) {
+			case 'rus':
+				newConfig.locale = rusLocale;
+				break;
+			case 'eng':
+				newConfig.locale = engLocale;
+				break;
+		}
+		setConfig(newConfig);
+		setVersion(prev => prev++);
+	}, [config]);
 
 	return (
-		<ConfigContext.Provider value={contextValue}>
+		<ConfigContext.Provider value={{...config, onChangeLang}}>
 			{children}
 		</ConfigContext.Provider>
 	);
 };
 
 export const useConfig = () => {
-	const [_, setVersion] = useState(0);
-	const [currentLang, setCurrentLang] = useState<LangT>('eng');
-	const config = useContext(ConfigContext);
-	const onChangeLang = (lang: LangT) => {
-		if (lang === currentLang) return;
-
-		switch (lang) {
-			case 'eng':
-				config.locale = engLocale;
-				break;
-			case 'rus':
-				config.locale = rusLocale;
-				break;
-		}
-		setCurrentLang(lang);
-		setVersion(prev => prev++);
-	};
-	return {config, lang: currentLang, onChangeLang};
+	return useContext(ConfigContext);
 };
 
 export default ConfigProvider;

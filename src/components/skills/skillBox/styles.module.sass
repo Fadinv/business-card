@@ -39,3 +39,17 @@ $class: skill-box
 		&._advanced
 			background: linear-gradient(to right, #005573 30%, #c1121f)
 			width: 80%
+
+		&._has-animation
+			transition: .7s ease-in width
+			width: 0
+		&._do-animate
+			&._beginner
+				background: linear-gradient(to right, #005573, #5fa8d3)
+				width: 20%
+			&._regular
+				background: linear-gradient(to right, #005573 50%, #e63946)
+				width: 50%
+			&._advanced
+				background: linear-gradient(to right, #005573 30%, #c1121f)
+				width: 80%

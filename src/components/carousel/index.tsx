@@ -1,4 +1,5 @@
 import CarouselPanel from '@/components/carousel/carouselPanel';
+import LanguageSwitcher from '@/components/languageSwitcher';
 import React, {FC, ReactNode, useCallback, useRef, useState} from 'react';
 import CarouselElement from '@/components/carousel/carouselElement';
 import styles from './styles.module.sass';
@@ -52,6 +53,7 @@ const Carousel: FC<CarouselProps> = ({list}) => {
 				currentIndex={currentIndex}
 				onChange={setCurrentIndex}
 			/>
+			<LanguageSwitcher/>
 			{list.map((item, index) => (
 				<CarouselElement
 					key={index}

@@ -7,5 +7,11 @@ export const engLocale: Locale = {
 	},
 	about: {
 		title: 'About me',
-	}
-}
+	},
+	softSkills: {
+		title: 'Soft Skills',
+	},
+	skills: {
+		title: 'Technologies I work with',
+	},
+};

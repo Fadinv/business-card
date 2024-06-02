@@ -1,42 +1,59 @@
 
+import {CarouselItemProps} from '@/components/carousel';
+import {useConfig} from '@/components/config';
 import SkillBox from '@/components/skills/skillBox';
 import React, {FC} from 'react';
 import Text from '@/components/text';
 import styles from './styles.module.sass';
 
-const Skills: FC = () => {
+interface SkillsProps extends CarouselItemProps {
+
+}
+
+const Skills: FC<SkillsProps> = ({isActive}) => {
+	const {skills, locale} = useConfig();
+
 	return (
 		<div className={styles['skills']}>
-			<Text as={'h1'} text={'Skills'}/>
+			<Text as={'h1'} text={locale.skills.title}/>
+			<div style={{margin: '20px'}}/>
 			<div className={styles['skills__list']}>
-				<SkillBox skillName={'JS'} lvl={'advanced'}/>
-				<SkillBox skillName={'react'} lvl={'advanced'}/>
-				<SkillBox skillName={'HTML'} lvl={'advanced'}/>
-				<SkillBox skillName={'CSS/SASS'} lvl={'advanced'}/>
-				<SkillBox skillName={'TS'} lvl={'regular'}/>
-				<SkillBox skillName={'graphql'} lvl={'regular'}/>
-				<SkillBox skillName={'webpack'} lvl={'regular'}/>
-				<SkillBox skillName={'git'} lvl={'regular'}/>
-				<SkillBox skillName={'redux'} lvl={'beginner'}/>
-				<SkillBox skillName={'next.js'} lvl={'beginner'}/>
-				<SkillBox skillName={'Vue'} lvl={'beginner'}/>
+				{skills.list.map((skill, index) => (
+					<SkillBox
+						key={index}
+						skillName={skill.skillName}
+						lvl={skill.lvl}
+						hasAnimation
+						animationDelay={500 + index * 200}
+						inView={isActive}
+					/>
+				))}
 			</div>
 		</div>
 	);
 };
 
-export const SoftSkills: FC = () => {
+interface SoftSkillsProps extends CarouselItemProps {
+
+}
+
+export const SoftSkills: FC<SoftSkillsProps> = ({isActive}) => {
+	const {softSkills, locale} = useConfig();
 	return (
 		<div className={styles['skills']}>
-			<Text as={'h1'} text={'Soft Skills'}/>
-			<div className={styles['skills__sep']}/>
+			<Text as={'h1'} text={locale.softSkills.title}/>
+			<div style={{margin: '20px'}}/>
 			<div className={styles['skills__list']}>
-				<SkillBox skillName={'Communication'} lvl={'advanced'}/>
-				<SkillBox skillName={'Teamwork'} lvl={'advanced'}/>
-				<SkillBox skillName={'Problem-Solving'} lvl={'advanced'}/>
-				<SkillBox skillName={'Learning'} lvl={'advanced'}/>
-				<SkillBox skillName={'Leadership'} lvl={'regular'}/>
-				<SkillBox skillName={'Creativity'} lvl={'regular'}/>
+				{softSkills.list.map((skill, index) => (
+					<SkillBox
+						key={index}
+						skillName={skill.skillName}
+						lvl={skill.lvl}
+						hasAnimation
+						animationDelay={500 + index * 200}
+						inView={isActive}
+					/>
+				))}
 			</div>
 		</div>
 	);

@@ -7,5 +7,11 @@ export interface Locale {
 	};
 	about: {
 		title: string;
-	}
+	};
+	softSkills: {
+		title: string;
+	};
+	skills: {
+		title: string;
+	};
 }

@@ -1,0 +1,30 @@
+@import "src/styles/mixins"
+
+$class: language-switcher
+
+.#{$class}
+	position: fixed
+	top: 20px
+	right: 20px
+	z-index: 10
+	+row()
+
+	> .#{$class}__el + .#{$class}__el
+		border-left: none
+
+	&__el
+		+row(center)
+		padding: 8px 16px
+		border: 2px solid #121212
+		cursor: pointer
+
+		&:first-child
+			border-bottom-left-radius: 8px
+			border-top-left-radius: 8px
+
+		&:last-child
+			border-bottom-right-radius: 8px
+			border-top-right-radius: 8px
+
+		&._active
+			background-color: rgba(119, 141, 169, 0.3)
