@@ -42,17 +42,12 @@ export const defaultContext = {
 	onChangeLang: (_: LangT) => {},
 	skills: {
 		list: [
-			{skillName: 'JS', lvl: 'advanced'},
-			{skillName: 'react', lvl: 'advanced'},
-			{skillName: 'HTML', lvl: 'advanced'},
+			{skillName: 'TS', lvl: 'advanced'},
+			{skillName: 'React', lvl: 'advanced'},
 			{skillName: 'CSS/SASS', lvl: 'advanced'},
-			{skillName: 'TS', lvl: 'regular'},
 			{skillName: 'graphql', lvl: 'regular'},
-			{skillName: 'webpack', lvl: 'regular'},
 			{skillName: 'git', lvl: 'regular'},
-			{skillName: 'redux', lvl: 'beginner'},
 			{skillName: 'next.js', lvl: 'beginner'},
-			{skillName: 'Vue', lvl: 'beginner'},
 		] as SkillList,
 	},
 	softSkills: {

@@ -42,7 +42,7 @@ export const SoftSkills: FC<SoftSkillsProps> = ({isActive}) => {
 	return (
 		<div className={styles['skills']}>
 			<Text as={'h1'} text={locale.softSkills.title}/>
-			<div style={{margin: '20px'}}/>
+			<div style={{margin: '.5em'}}/>
 			<div className={styles['skills__list']}>
 				{softSkills.list.map((skill, index) => (
 					<SkillBox
